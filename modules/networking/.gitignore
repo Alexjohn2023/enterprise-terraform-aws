@@ -1,0 +1,12 @@
+cat > .gitignore << 'EOF'
+# Terraform state
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+*.tfplan
+*.tfvars
+crash.log
+override.tf
+.terraformrc
+EOF
