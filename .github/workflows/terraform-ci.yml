@@ -12,6 +12,10 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: environments/dev
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -23,7 +27,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Format Check
-        run: terraform fmt -check
+        run: terraform fmt -check -recursive
 
       - name: Terraform Validate
         run: terraform validate
