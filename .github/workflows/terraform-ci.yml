@@ -42,7 +42,7 @@ jobs:
       - name: Run Checkov Security Scan
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: .
+          directory: environments/dev
 
       - name: Terraform Plan
         run: terraform plan -input=false
