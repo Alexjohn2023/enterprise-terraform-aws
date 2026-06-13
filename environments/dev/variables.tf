@@ -19,7 +19,7 @@ variable "bucket_name" {
   default = "enterprise-app"
 }
 variable "owner" {
-  type    = string
-  default = "Alexander Njoku"
+  type        = string
+  default     = "Alexander Njoku"
   description = "Owner of the infrastructure"
 }

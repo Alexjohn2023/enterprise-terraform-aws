@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "app" {
   bucket = "${var.bucket_name}-${var.environment}-${var.account_id}"
-  tags = { Name = "${var.bucket_name}-${var.environment}" }
+  tags   = { Name = "${var.bucket_name}-${var.environment}" }
 }
 
 resource "aws_s3_bucket_versioning" "app" {
