@@ -39,55 +39,11 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-     name: Terraform CI
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-permissions:
-  contents: read
-
-jobs:
-  terraform:
-    name: Terraform Validation and Plan
-    runs-on: ubuntu-latest
-
-    env:
-      TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-
-    defaults:
-      run:
-        working-directory: environments/dev
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Init
-        run: terraform init
-
-      - name: Terraform Format Check
-        run: terraform fmt -check -recursive
-
-      - name: Terraform Validate
-        run: terraform validate
-
       - name: Run Checkov Security Scan
         uses: bridgecrewio/checkov-action@master
         with:
           directory: environments/dev
           skip_check: CKV_AWS_144,CKV2_AWS_11,CKV_AWS_145,CKV2_AWS_62,CKV2_AWS_61,CKV_AWS_18,CKV2_AWS_41
-
-      - name: Terraform Plan
-        run: terraform plan -input=false
 
       - name: Terraform Plan
         run: terraform plan -input=false
